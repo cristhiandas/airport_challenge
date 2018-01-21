@@ -102,7 +102,7 @@ How to start
 
 Once the gems are installed write ```bundle exec rspec``` on the command line.
 
-you can also run ```rubocop``` to check that there are no offences.
+you can also run ```bundle exec rubocop``` to check that there are no offences.
 
 ### Run the program
 
