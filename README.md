@@ -26,7 +26,7 @@ I want to instruct a plane to land at an airport
 
 As an air traffic controller
 So I can get passengers on the way to their destination
-I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport
+I want to instruct a plane to take off from an airport and confirm that it is no longer at the airport
 
 As an air traffic controller
 To ensure safety
@@ -59,7 +59,7 @@ In code review we'll be hoping to see:
 * High [Test coverage](https://github.com/makersacademy/course/blob/master/pills/test_coverage.md) (>95% is good)
 * The code is elegant: every class has a clear responsibility, methods are short etc.
 
-Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how much challenge you want this weekend.
+Reviewers will potentially be using this [code review rubric](docs/review.md).  Referring to this rubric in advance will make the challenge somewhat easier.  You should be the judge of how many challenges you want this weekend.
 
 **BONUS**
 
@@ -84,24 +84,53 @@ My approach was the following:
 <img src = "images/chart.jpg" />
 
 2- For each step that I made, I tested "the code" on IRB and watched it fail in a miserable way.
-3- I made a test in Rspec for each step, and watched it fail many.
+3- I made a test in Rspec for each step and watched it fail many.
 4- I made the test pass by putting an easy solution (Yeah, shameless I know).
 5-I added some real code, sometimes I watched it pass, other times I struggled a lot.
 
 When did I struggled the most?
-Raising errors, I tried to raised them using expect(), instead of expect {}, and took me a lot of time before realising it.
+Raising errors, I tried to raise them using expect(), instead of expect {}, and took me a lot of time before realising it.
 
 
+How to start
+-------------
+- Clone the repo.
+- Use the 2.4.0 version for ruby ```rvm install 2.4.0``` then ```rvm 2.4.0```, the ```ruby -v``` to check that you are using the right ruby version
+- Install the gems ```gem install bundler``` then ```bundle install```
 
+### Running tests
+
+Once the gems are installed write ```bundle exec rspec``` on the command line.
+
+you can also run ```rubocop``` to check that there are no offences.
+
+### Run the program
+
+- open ```irb``` or ```pry```
+- ```require "./lib/airplane.rb"```, ```require "./lib/weather.rb"``` and ```require "./lib/airport.rb"```
+- create new weather, airplane and airport:
+```
+weather = Weather.new
+airplane = Airplane.new
+airport = Airport.new
+```
+
+#### Examples
+Weather class:
+![weather_example](./images/examp1.png)
+Airplane class:
+![airplane_example](./images/examp2.png)
+Airport class:
+![airport_example](./images/examp3.png)
 
 How it works
 -------------
-The code have 3 classes, and a .rb file for each classes
+The code has 3 classes, and a .rb file for each class
 - airplane.rb
 - weather.rb
 - airport.rb
 
-The airplane class have to be initialized, to know wether it is in the ground or not, it have been set by default to NOT be on the ground. Then, it have a method "Flying?" that returns true if the plane is flaying and false if not.
+The airplane class have to be initialized, to know whether it is in the ground or not, it has been set by default to NOT be on the ground. Then, it has a method "Flying?" that returns true if the plane is flying and false if not.
 
 The weather class have a method "sunny?" that returns true 70% of the times for sunny days and false 30% of the times for stormy days. I did this method searching in StackOverflow the best way to return a random boolean.
 
@@ -111,4 +140,4 @@ The full? method checks if the airport if full in order to land or raise an erro
 
 The takeoff method returns a plane for it to fly.
 
-The raise_stormy_errors was made to well... raise the error when trying to land or takeoff a plane, if you check the code you will see that the other errors for full and empty are inside the takeoff and land methods, I didn't use them in the same "raise_stormy_errors" method because It would send and error when trying to land a plane when empty or takeoff a plane while full. Instead I created specific methods for both landing and takeoff errors.
+The raise_stormy_errors was made to well... raise the error when trying to land or take off a plane, if you check the code you will see that the other errors for full and empty are inside the takeoff and land methods, I didn't use them in the same "raise_stormy_errors" method because It would send an error when trying to land a plane when empty or takeoff a plane while full. Instead, I created specific methods for both landing and takeoff errors.

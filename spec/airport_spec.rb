@@ -23,10 +23,10 @@ describe Airport do
     end
   end
 
-  let(:plane) {FlyingPlane.new}
-  let(:sunnyweather) {SunnyWeather.new}
-  let(:stormyweather) {StormyWeather.new}
-  let(:landed_plane) {LandedPlane.new}
+  let(:plane) { FlyingPlane.new }
+  let(:sunnyweather) { SunnyWeather.new }
+  let(:stormyweather) { StormyWeather.new }
+  let(:landed_plane) { LandedPlane.new }
 
   context "Checks Capacity" do
     it "Raise an error if the Airport is full" do
